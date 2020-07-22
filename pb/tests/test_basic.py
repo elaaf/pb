@@ -6,9 +6,11 @@ import time
 from pb import pb
 
 
-array = range(0,1000,1)
+array = range(0,100,1)
 
 print("Executing loop")
-for x in pb(array):
-    time.sleep(0.01)
+index = 0
+for x in pb(array, desc="Epoch"):
+    index += 1
+    time.sleep(0.1)
     pass

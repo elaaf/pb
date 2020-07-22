@@ -1,1 +1,1 @@
-print("__init__.py")
+from .console import get_terminal_width
