@@ -1,5 +1,5 @@
 # Imports
-# from .console import get_terminal_width
+from .console import get_terminal_width
 
 
 

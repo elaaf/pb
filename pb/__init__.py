@@ -1,1 +1,0 @@
-from .console import get_terminal_width

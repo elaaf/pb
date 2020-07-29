@@ -1,9 +1,10 @@
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+#Test for basic progress bar working
 
+import sys
+sys.path.append("..")
 
 import time
-from pb import pb
+from pb.pb.pb  import pb
 
 
 array = range(0,100,1)
