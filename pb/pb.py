@@ -3,7 +3,8 @@ from .console import get_terminal_width
 
 
 
-# pb Class
+
+# pb (ProgressBar) Class
 class pb():
     def __init__(self, iterable, desc="", width=50, console_width_ratio=0.3):
         self.iterable = iterable
