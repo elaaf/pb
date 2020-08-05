@@ -1,8 +1,8 @@
-# Imports
-# import os
+# Console/Terminale related functions
 
 
-# To get width of the terminal
+
+# Get width of the terminal
 def get_terminal_width():
     """
     Returns:

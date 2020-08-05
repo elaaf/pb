@@ -1,43 +1,42 @@
-# Imports
+#!/usr/bin/python3
+
+
+# Local Imports
 from .console import get_terminal_width
 
 
 
-
-# pb (ProgressBar) Class
+# Main pb (ProgressBar) Class
 class pb():
-    def __init__(self, iterable, desc="", width=50, console_width_ratio=0.3):
+    def __init__(self, iterable, info="", bar_console_ratio=0.3):
         self.iterable = iterable
-        self.len = len(self.iterable)
-        self.index = 0
-        self.desc = desc
-        self.width = width
-        if get_terminal_width():
-            self.width = int(get_terminal_width()*console_width_ratio)
+        self.len = len(iterable)
+        self.info = info
+        self.width = int(get_terminal_width()*bar_console_ratio)
     
 
     def __iter__(self):
+        self.index = 0
         return self
 
-
+    
     def __next__(self):
         try:
             item = self.iterable[self.index]
-            self.show_bar()
+            self.update()
+            self.index += 1
+            return item
         except IndexError:
-            self.show_bar()
             raise StopIteration
-        self.index += 1
-        return item
     
 
-    def show_bar(self):
-        string_to_print = "\r" + str(self.desc) +" "+ self.create_bar()
+    def update(self):
+        string_to_print = "\r" + str(self.info) +" "+ self.create_bar()
         
         # print the ProgressBar
         print( string_to_print, end="", flush=False )
         return
-
+    
 
     def create_bar(self):
         total = self.len

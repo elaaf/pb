@@ -1,15 +1,16 @@
-# Test for basic progress bar working
-
-# Add pb module directory to enable import
-import sys
-sys.path.append("..")
-
 # Imports
 import time
+from tqdm import tqdm
+
+# Add one level up path to sys
+# To enable pb local import
+#import sys
+#sys.path.append("..")
+
 
 # Local Import
 # NOTE: Maybe a better approach ?
-from pb.pb.pb  import pb
+#from pb.pb.pb  import pb
 
 
 
@@ -25,6 +26,6 @@ print("Executing loop with pb")
 PAUSE_TIME = 0.005
 info = "__test_info__"
 
-for x in pb(array, info):
+for x in tqdm(array, info):
     time.sleep(PAUSE_TIME)
     pass
