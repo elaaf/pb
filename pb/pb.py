@@ -34,7 +34,7 @@ class pb():
         string_to_print = "\r" + str(self.info) +" "+ self.create_bar()
         
         # print the ProgressBar
-        print( string_to_print, end="", flush=False )
+        print( string_to_print, end="", flush=True )
         return
     
 
@@ -45,7 +45,31 @@ class pb():
         current_progress = str(current) + "/" + str(total)
 
         done = (self.index/self.len)*self.width
-        pbar = [ ("\u2588" if done>x else "\u2800") for x in range(self.width) ]
+
+        # Define unicode block characters
+        blank_block         = "\u2800"
+        one_eight_block     = "\u258F"
+        one_four_block      = "\u258E"
+        three_eight_block   = "\u258D"
+        half_block          = "\u258C"
+        five_eight_block    = "\u258B"
+        three_four_block    = "\u258A"
+        seven_eight_block   = "\u2589"
+        full_block          = "\u2588"
+
+
+        pbar = [(full_block         if done>x       else
+                 seven_eight_block  if done>x-(7/8) else
+                 three_four_block   if done>x-(3/4) else
+                 five_eight_block   if done>x-(5/8) else 
+                 half_block         if done>x-(4/8) else
+                 three_eight_block  if done>x-(3/8) else
+                 one_four_block     if done>x-(1/4) else
+                 one_eight_block    if done>x-(1/8) else
+                 blank_block)
+                 
+                 for x in range(self.width) ]
+
 
         pbar = "".join(x for x in pbar)
 
